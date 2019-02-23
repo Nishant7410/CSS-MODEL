@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+    <input id="input" style="border-radius:30px;border:4px dotted blue;text-decoration:underline"/>
+    <button id="submitbutton">submit </button>
+    <table  id="table" height="100%" width="100%" >     </table>
+    <script>
+   /* var input=document.getElementById("test");
+    var parent=document.getElementById("data");
+                var i=0;
+        var storage=[];
+        var date=[];*/
+    /*input.onkeyup=function(event)
+    {
+        var code=event.keyCode;
+        
+        if(code==13)
+        {
+            var value=input.value;
+           storage.push(value);
+            date.push(new Date().toString());
+                generate();                
+            }
+    }
+    function generate()
+        {
+            parent.innerHTML="";
+           for(int i=0;i<storage.length;i++)
+               {
+            var ele=document.createElement("td");
+            var but=document.createElement("button");
+             var tr=document.createElement("tr");
+                    tr.setAttribute("id",i);
+         var tr1=document.createElement("td");
+        // var tr2=document.createElement("td");
+         var tr3=document.createElement("td");
+            ele.innerHTML=storage[i];
+            but.innerHTML="X";
+         tr1.innerHTML=i+1;
+         tr3.innerHTML=date[i];
+            tr.append(tr1);
+            tr.append(ele);
+         tr.append(tr3);
+                   	but.addEventListener("click",function(e)
+			{
+				arr.splice(e.target.parentNode.parentNode.id,0);
+				date.splice(e.target.parentNode.parentNode.id,1);
+				generate();
+			});
+         tr.append(but);
+                   parent.appendChild(tr);
+               }
+           input.value="";
+        }*/
+        var parent = document.getElementById("table");
+var btn = document.getElementById("submitbutton");
+var input = document.getElementById("input");
+var arr=[];
+var date=[];
+        btn.addEventListener("click",function(abc)
+{
+	var value=input.value;
+	if(!value)
+	{
+		alert("not value");
+		return ;
+	}
+	arr.push(value);
+	date.push(new Date().toString());
+	generateRows();
+}
+);
+	function generateRows()
+	{
+		parent.innerHTML="";
+		for(var i=0;i<arr.length;i++)
+		{
+			var row=document.createElement('tr');
+			row.setAttribute("id",i);
+			var sr_no=document.createElement('td');
+			sr_no.innerHTML=i+1;
+			row.appendChild(sr_no);
+
+			var task_no=document.createElement('td');
+			task_no.innerHTML=arr[i];
+			row.appendChild(task_no);
+
+			var date_no=document.createElement('td');
+			date_no.innerHTML=date[i];
+			row.appendChild(date_no);
+
+			var del_co=document.createElement('td');
+			var button=document.createElement('button');
+			button.innerHTML="X";
+
+			button.addEventListener("click",function(e)
+			{
+				arr.splice(e.target.parentNode.parentNode.id,1);
+				date.splice(e.target.parentNode.parentNode.id,1);
+                parent.removeChild(row);
+				generateRows();
+			});
+			del_co.appendChild(button);
+			row.appendChild(del_co);
+			parent.appendChild(row);
+		}
+		input.value="";
+	}
+
+    </script>
+</body>
+</html>
