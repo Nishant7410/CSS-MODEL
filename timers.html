@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input id="abc" style="width:200px;">
+    <script>
+var ip=document.getElementById("abc");
+        var interval=setInterval(change_width,1000);
+        function change_width()
+        {
+             console.log(ip.style.width);
+            var width=parseInt(ip.style.width)+1;
+            ip.style.width=width+"px";
+            if(width+1==500)
+                {
+                    clearInterval(inteval);
+                }
+           
+        }
+    </script>
+</body>
+</html>
