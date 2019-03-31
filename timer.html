@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body
+        {
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+            background: #40E0D0; 
+background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);  
+background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0); 
+  display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+    </style>
+</head>
+<body>
+   <div>
+       <input id="input" type="text" placeholder="Enter Time" style="height:40px;"/><br>
+   <center> <button id="Start" style="height:30px;">Start</button>
+    <button id="Stop" style="height:30px;">Stop</button>
+       </center>
+    </div>
+</body>
+<script>
+    var start=document.getElementById("Start");
+    var stop=document.getElementById("Stop");
+    var sound = new Audio();
+    sound.src="E:\english/Guitar.m4a";
+    var interval;
+    start.addEventListener("click",function(event)
+                          {
+        console.log("helo");
+        interval=setInterval(fun,1000);
+        function fun()
+    {
+        var input=document.getElementById("input");
+        if(input.value=="")
+            {
+            alert("Please Enter Time");
+                clearInterval(interval);
+            }
+        else 
+            {
+                if(parseInt(input.value)==0)
+                    {
+                        sound.play();
+                        alert("Time is over");
+                        clearInterval(interval);
+                        
+                    }
+                else{
+                    input.value=parseInt(input.value)-1;
+                }
+            }
+    }
+    });
+    stop.addEventListener("click",function(event)
+                         {
+        clearInterval(interval);
+    });
+    </script>
+</html>
