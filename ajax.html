@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background: #314755;  
+            background: -webkit-linear-gradient(to right, #26a0da, #314755);  
+            background: linear-gradient(to right, #26a0da, #314755); 
+
+        }
+    </style>
+</head>
+<body>
+    <input id="input"/>
+    <button id="button">search</button>
+    <table id="table" style="border:1px solid black;text-align:center" height="100%" width="100%">
+    <tr style="background-color:red;">
+      <th style="text-color:black;">Image</th>
+       <th style="text-color:black;">Login</th>
+        <th style="text-color:black;">Id</th>
+        <th style="text-color:black;">Type</th>
+    </tr>
+     </table>
+</body>
+<script>
+    var data=[];
+    var but=document.getElementById("button");
+    var xhr=new XMLHttpRequest();
+    var parent=document.getElementById("table");
+    var productId=0;
+    but.addEventListener("click",function(event)
+                        {
+        var  input=document.getElementById("input").value;
+      xhr.open("GET","https://api.github.com/users?since="+input);
+         xhr.send();
+    xhr.onload=function()
+    {
+      data=JSON.parse(xhr.responseText);
+     //  console.log(data);
+        print(data);
+    };
+       
+    });
+    function print(data)
+    {
+       for(var i=0;i<data.length;i++)
+           {
+            var tr=document.createElement("tr");
+               tr.setAttribute("id",productId);
+               var td=document.createElement("td");
+               td.setAttribute("id","Image"+productId);
+               var img=document.createElement("img");
+               img.setAttribute("id","Image1"+productId);
+               img.setAttribute("src",data[i].avatar_url);
+              // console.log(data[i].avatar_url);
+               img.setAttribute("style","height:100px;width:100px");
+               td.append(img);
+               tr.append(td);
+               
+               var  td1=document.createElement("td");
+               td1.setAttribute("id","Login"+productId);
+               td1.innerHTML=(data[i])["login"];
+               tr.append(td1);
+               
+               var  td2=document.createElement("td");
+               td2.setAttribute("id","Id"+productId);
+               td2.innerHTML=(data[i])["id"];
+               tr.append(td2);
+               
+               var  td3=document.createElement("td");
+               td3.setAttribute("id","Type"+productId);
+               td3.innerHTML=(data[i])["type"];
+               tr.append(td3);
+               parent.append(tr);
+           }
+    }
+    
+    </script>
+</html>
