@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+       
+     body
+        {
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+            background: #40E0D0; 
+background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);  
+background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0); 
+  display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #my
+        {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+  
+        }
+    </style>
+</head>
+<body>
+  <div>
+  <center>
+  <input id="input" type="text" style="height:40px"/><br>
+  <button id="button" style="height:20px;">Search</button><br>
+   <a id="photo"></a>
+      </center>
+      </div> 
+</body>
+<script>
+    var but=document.getElementById("button");
+    var input=document.getElementById("input");
+    input.setAttribute("placeholder","Enter Roll No.");
+    var add=document.getElementById("photo");
+    but.addEventListener("click",function(event)
+                        {
+        var img=document.createElement("img");
+        img.setAttribute("style","height:300px;width:300px");
+       img.setAttribute("id","my"); 
+    img.setAttribute("src","https://punjab.chitkara.edu.in//Storage/Images/Student/"+input.value+".jpg?zz=785");
+        add.innerHTML="";
+        add.append(img);
+    });
+    
+    </script>
+</html>
