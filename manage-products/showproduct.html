@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Product</title>
+</head>
+<body>
+   <h1>Show Products</h1><br>
+   <table id="table" style="border:1px solid black;text-align:center">
+       <tr>
+           <th width="100px">S NO.</th>
+           <th width="100px">Product Name</th>
+           <th width="100px">Price</th>
+           <th width="100px">No. of Quantity</th>
+           <th width="100px">Add to Cart</th>
+       </tr>
+   </table>
+    
+</body>
+<script>
+   var user=localStorage.getItem("user");
+    var str="Nishant";
+    var str1="Rajesh";
+    if(user.localeCompare(str)==0)
+        {
+    var product=[];
+    var productId=0;
+    var cart=[];
+    var cartId=0;
+    var sum=0;
+     var parent=document.getElementById("table");
+    if(localStorage.getItem("hey"))
+        {
+            var storage=localStorage.getItem("hey");
+            var array=JSON.parse(storage);
+            if(localStorage.getItem("cart"))
+                {
+                    var arr=localStorage.getItem("cart");
+                    var arr1=JSON.parse(arr);
+                    var ob=new Object();
+                    for(var i=0;i<arr1.length;i++)
+                        {
+                        cart.push(arr1[i]);
+                        }
+                    localStorage.removeItem("cart");
+                }
+            for(var i=0;i<array.length;i++)
+                {
+               addtocart(array[i]);
+                    productId++;
+                }
+            productId=product.length;
+        }
+        
+    function addtocart(object)
+    {
+       var tr=document.createElement("tr");
+        tr.setAttribute("id",productId);
+       var td1=document.createElement("td");
+        td1.setAttribute("id","productId"+productId);
+        td1.setAttribute("style","width:100px");
+        td1.innerHTML=object.Id;
+        tr.append(td1);
+        
+       var td2=document.createElement("td");
+        td2.setAttribute("id","productName"+productId);
+        td2.setAttribute("style","width:100px");
+        td2.innerHTML=object.Name;
+         tr.append(td2);
+        
+       var td3=document.createElement("td");
+        td3.setAttribute("id","productPrice"+productId);
+        td3.setAttribute("style","width:100px");
+        td3.innerHTML=object.Price;
+         tr.append(td3);
+        
+       var td4=document.createElement("td");
+        var input=document.createElement("input");
+        input.setAttribute("style","width:100px");
+        input.setAttribute("type","text");
+        input.setAttribute("id","productInput1"+productId);
+        td4.setAttribute("id","productInput"+productId);
+        td4.setAttribute("style","width:100px");
+        td4.append(input);
+         tr.append(td4);
+        
+        var td5=document.createElement("td");
+        var button=document.createElement("button");
+        button.setAttribute("style","height:100px");
+        button.innerHTML="Add To Cart";
+        td5.setAttribute("id","productButton"+productId);
+        td5.setAttribute("style","width:100px");
+        td5.append(button);
+         tr.append(td5);
+        parent.appendChild(tr);
+        
+        button.addEventListener("click",function(event)
+                               {
+           var selectedindex=event.target.parentNode.parentNode.id; 
+            localstorage(selectedindex);
+            
+        });
+    }
+       function localstorage(index)
+    {
+       var object=new Object(); 
+        object.Id=document.getElementById("productId"+index).innerHTML;
+        object.Name=document.getElementById("productName"+index).innerHTML;
+        object.Price=document.getElementById("productPrice"+index).innerHTML;
+        object.Quantity=document.getElementById("productInput1"+index).value;
+        var value=parseInt(document.getElementById("productInput1"+index).value);
+        if(object.Quantity=="")
+            alert("Please enter quantity");
+        if(object.Quantity!="")
+            {
+        var id=parseInt(document.getElementById("productId"+index).innerHTML);
+        var hey=localStorage.getItem("hey");
+        var hey1=JSON.parse(hey);
+                var i;
+        for(i=0;i<hey1.length;i++)
+            if(hey1[i].Id==id)
+                break;
+                if(value>hey1[i].Quantity)
+                    alert("Not Available");
+                else
+                    {
+        hey1[i].Quantity=hey1[i].Quantity-value;
+        var arr=JSON.stringify(hey1);
+                        localStorage.setItem("hey",arr);
+        var pprice=document.getElementById("productPrice"+index).innerHTML;
+        cart.push(object);
+        var array=JSON.stringify(cart);
+        localStorage.setItem("cart",array);
+        total(value,pprice);
+                        sum=0;
+        for(var i=0;i<cart.length;i++)
+        total(cart[i].Quantity,cart[i].Price);
+            }
+            }
+    }
+    function total(value,pprice)
+    {
+        sum=sum+parseInt(value*pprice);
+        var str=JSON.stringify(sum);
+        localStorage.setItem("total",str);
+    }
+        }
+    else{
+        var product=[];
+    var productId=0;
+    var cart=[];
+    var cartId=0;
+    var sum=0;
+     var parent=document.getElementById("table");
+    if(localStorage.getItem("hey"))
+        {
+            var storage=localStorage.getItem("hey");
+            var array=JSON.parse(storage);
+            if(localStorage.getItem("cart1"))
+                {
+                    var arr=localStorage.getItem("cart1");
+                    var arr1=JSON.parse(arr);
+                    var ob=new Object();
+                    for(var i=0;i<arr1.length;i++)
+                        {
+                        cart.push(arr1[i]);
+                        }
+                    localStorage.removeItem("cart1");
+                }
+            for(var i=0;i<array.length;i++)
+                {
+               addtocart(array[i]);
+                    productId++;
+                }
+            productId=product.length;
+        }
+        
+    function addtocart(object)
+    {
+       var tr=document.createElement("tr");
+        tr.setAttribute("id",productId);
+       var td1=document.createElement("td");
+        td1.setAttribute("id","productId"+productId);
+        td1.setAttribute("style","width:100px");
+        td1.innerHTML=object.Id;
+        tr.append(td1);
+        
+       var td2=document.createElement("td");
+        td2.setAttribute("id","productName"+productId);
+        td2.setAttribute("style","width:100px");
+        td2.innerHTML=object.Name;
+         tr.append(td2);
+        
+       var td3=document.createElement("td");
+        td3.setAttribute("id","productPrice"+productId);
+        td3.setAttribute("style","width:100px");
+        td3.innerHTML=object.Price;
+         tr.append(td3);
+        
+       var td4=document.createElement("td");
+        var input=document.createElement("input");
+        input.setAttribute("style","width:100px");
+        input.setAttribute("type","text");
+        input.setAttribute("id","productInput1"+productId);
+        td4.setAttribute("id","productInput"+productId);
+        td4.setAttribute("style","width:100px");
+        td4.append(input);
+         tr.append(td4);
+        
+        var td5=document.createElement("td");
+        var button=document.createElement("button");
+        button.setAttribute("style","height:100px");
+        button.innerHTML="Add To Cart";
+        td5.setAttribute("id","productButton"+productId);
+        td5.setAttribute("style","width:100px");
+        td5.append(button);
+         tr.append(td5);
+        parent.appendChild(tr);
+        
+        button.addEventListener("click",function(event)
+                               {
+           var selectedindex=event.target.parentNode.parentNode.id; 
+            localstorage(selectedindex);
+            
+        });
+    }
+       function localstorage(index)
+    {
+       var object=new Object(); 
+        object.Id=document.getElementById("productId"+index).innerHTML;
+        object.Name=document.getElementById("productName"+index).innerHTML;
+        object.Price=document.getElementById("productPrice"+index).innerHTML;
+        object.Quantity=document.getElementById("productInput1"+index).value;
+        var value=parseInt(document.getElementById("productInput1"+index).value);
+        if(object.Quantity=="")
+            alert("Please enter quantity");
+        if(object.Quantity!="")
+            {
+        var id=parseInt(document.getElementById("productId"+index).innerHTML);
+        var hey=localStorage.getItem("hey");
+        var hey1=JSON.parse(hey);
+                var i;
+        for(i=0;i<hey1.length;i++)
+            if(hey1[i].Id==id)
+                break;
+                if(value>hey1[i].Quantity)
+                    alert("Not Available");
+                else
+                    {
+        hey1[i].Quantity=hey1[i].Quantity-value;
+        var arr=JSON.stringify(hey1);
+                        localStorage.setItem("hey",arr);
+        var pprice=document.getElementById("productPrice"+index).innerHTML;
+        cart.push(object);
+        var array=JSON.stringify(cart);
+        localStorage.setItem("cart1",array);
+                        sum=0;
+        for(var i=0;i<cart.length;i++)
+        total(cart[i].Quantity,cart[i].Price);
+            }
+            }
+    }
+    function total(value,pprice)
+    {
+        sum=sum+parseInt(value*pprice);
+        var str=JSON.stringify(sum);
+        localStorage.setItem("total1",str);
+    }
+    }
+   </script>
+</html>

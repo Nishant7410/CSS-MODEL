@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Product</title>
+</head>
+<body>
+    <h1>Show Cart</h1><br>
+    <table id="table" style="border:1px solid black;text-align: center;">
+    <tr>
+        <th width="100px">ID</th>
+        <th width="100px">Name</th>
+        <th width="100px">Price</th>
+        <th width="100px">Quantity</th>
+        <th width="100px"> Remove Item</th>
+    </tr>
+    </table>
+    <p id="add">
+        Grand Total=
+    </p>
+    <script>
+        var str=localStorage.getItem("user");
+        var user="Nishant";
+        var user1="Rajesh";
+        if(str.localeCompare(user)==0)
+            {
+       generateagain();
+        function generateagain()
+        {
+        var productId=0;
+        var cart=localStorage.getItem("cart");
+        var data=JSON.parse(cart);
+        var parent=document.getElementById("table");
+        var app=document.getElementById("add");
+        for(var i=0;i<data.length;i++)
+            {
+               showcart(data[i]);
+                productId++;
+                
+            }
+        function showcart(object)
+        {
+            var tr=document.createElement("tr");
+                tr.setAttribute("id",productId);
+            var td1=document.createElement("td");
+            td1.setAttribute("id","productId"+productId);
+            td1.setAttribute("style","width:100px");
+            td1.innerHTML=object.Id;
+            tr.append(td1);
+            
+             var td2=document.createElement("td");
+            td2.setAttribute("id","productName"+productId);
+            td2.setAttribute("style","width:100px");
+            td2.innerHTML=object.Name;
+            tr.append(td2);
+            
+             var td3=document.createElement("td");
+            td3.setAttribute("id","productPrice"+productId);
+            td3.setAttribute("style","width:100px");
+            td3.innerHTML=object.Price;
+            tr.append(td3);
+            
+             var td4=document.createElement("td");
+            td4.setAttribute("id","productQuantity"+productId);
+            td4.setAttribute("style","width:100px");
+            td4.innerHTML=object.Quantity;
+            tr.append(td4);
+            
+            var btn=document.createElement("button");
+            btn.setAttribute("id","button"+productId);
+            btn.setAttribute("style","width:100px")
+            btn.innerHTML="Remove";
+            var td5=document.createElement("td");
+            td5.setAttribute("id","productRemove"+productId);
+            td5.append(btn);
+            tr.append(td5);
+            
+            parent.append(tr);
+            
+            btn.addEventListener("click",function(event)
+                                 {
+                
+                        var index=event.target.parentNode.parentNode.id;
+                var value=parseInt(document.getElementById("productId"+index).innerHTML);
+            var quantity=parseInt(document.getElementById("productQuantity"+index).innerHTML);
+            var hey=localStorage.getItem("hey");
+            var hey1=JSON.parse(hey);
+            var i;
+            for(i=0;i<hey1.length;i++)
+                    if(value==hey1[i].Id)
+                            break;
+            hey1[i].Quantity=hey1[i].Quantity+quantity;
+            var arr=JSON.stringify(hey1);
+            localStorage.setItem("hey",arr);
+                        
+            
+                for(var i=0;i<data.length;i++)
+                    if(value==data[i].Id)
+                        {
+                            data.splice(i,1);
+                            break;
+                        }
+                var str=JSON.stringify(data);
+            localStorage.setItem("cart",str);
+             var quantity=parseInt(document.getElementById("productQuantity"+index).innerHTML);
+            var price=parseInt(document.getElementById("productPrice"+index).innerHTML);
+             var p=localStorage.getItem("total");
+        var tot=JSON.parse(p);
+             tot=tot-(quantity*price);
+             var grand=JSON.stringify(tot);
+        localStorage.setItem("total",grand);
+             removechild();
+                generateagain();
+            });
+        }
+        
+       
+        function removechild()
+        {
+           /* var childnodes=parent.childNodes;
+            for(var i=1;childnodes.length>1;)
+                parent.removeChild(childnodes[i]);*/
+            parent.innerHTML="";
+            
+            var tr=document.createElement("tr");
+                
+            var td1=document.createElement("td");
+            td1.setAttribute("style","width:100px");
+            td1.innerHTML="ID";
+            tr.append(td1);
+            
+             var td2=document.createElement("td");
+            td2.setAttribute("style","width:100px");
+            td2.innerHTML="Name";
+            tr.append(td2);
+            
+             var td3=document.createElement("td");
+            td3.setAttribute("style","width:100px");
+            td3.innerHTML="Price";
+            tr.append(td3);
+            
+             var td4=document.createElement("td");
+            td4.setAttribute("style","width:100px");
+            td4.innerHTML="Quantity";
+            tr.append(td4);
+            
+            
+            var td5=document.createElement("td");
+           td5.setAttribute("style","width:100px");
+            td5.innerHTML="Remove Item";
+            tr.append(td5);
+            
+            parent.append(tr);
+            
+            app.innerHTML="";
+            app.innerHTML="Grand Total=";
+            
+        }
+         
+                              
+        var p=localStorage.getItem("total");
+        var tot=JSON.parse(p);
+        app.append(tot);
+        }
+            }
+        else
+            {
+                generateagain();
+        function generateagain()
+        {
+        var productId=0;
+        var cart=localStorage.getItem("cart1");
+        var data=JSON.parse(cart);
+        var parent=document.getElementById("table");
+        var app=document.getElementById("add");
+        for(var i=0;i<data.length;i++)
+            {
+               showcart(data[i]);
+                productId++;
+                
+            }
+        function showcart(object)
+        {
+            var tr=document.createElement("tr");
+                tr.setAttribute("id",productId);
+            var td1=document.createElement("td");
+            td1.setAttribute("id","productId"+productId);
+            td1.setAttribute("style","width:100px");
+            td1.innerHTML=object.Id;
+            tr.append(td1);
+            
+             var td2=document.createElement("td");
+            td2.setAttribute("id","productName"+productId);
+            td2.setAttribute("style","width:100px");
+            td2.innerHTML=object.Name;
+            tr.append(td2);
+            
+             var td3=document.createElement("td");
+            td3.setAttribute("id","productPrice"+productId);
+            td3.setAttribute("style","width:100px");
+            td3.innerHTML=object.Price;
+            tr.append(td3);
+            
+             var td4=document.createElement("td");
+            td4.setAttribute("id","productQuantity"+productId);
+            td4.setAttribute("style","width:100px");
+            td4.innerHTML=object.Quantity;
+            tr.append(td4);
+            
+            var btn=document.createElement("button");
+            btn.setAttribute("id","button"+productId);
+            btn.setAttribute("style","width:100px")
+            btn.innerHTML="Remove";
+            var td5=document.createElement("td");
+            td5.setAttribute("id","productRemove"+productId);
+            td5.append(btn);
+            tr.append(td5);
+            
+            parent.append(tr);
+            
+           btn.addEventListener("click",function(event)
+                                 {
+                
+                        var index=event.target.parentNode.parentNode.id;
+                var value=parseInt(document.getElementById("productId"+index).innerHTML);
+            var quantity=parseInt(document.getElementById("productQuantity"+index).innerHTML);
+            var hey=localStorage.getItem("hey");
+            var hey1=JSON.parse(hey);
+            var i;
+            for(i=0;i<hey1.length;i++)
+                    if(value==hey1[i].Id)
+                            break;
+            hey1[i].Quantity=hey1[i].Quantity+quantity;
+            var arr=JSON.stringify(hey1);
+            localStorage.setItem("hey",arr);
+                        
+            
+                for(var i=0;i<data.length;i++)
+                    if(value==data[i].Id)
+                        {
+                            data.splice(i,1);
+                            break;
+                        }
+                var str=JSON.stringify(data);
+            localStorage.setItem("cart1",str);
+             var quantity=parseInt(document.getElementById("productQuantity"+index).innerHTML);
+            var price=parseInt(document.getElementById("productPrice"+index).innerHTML);
+             var p=localStorage.getItem("total1");
+        var tot=JSON.parse(p);
+             tot=tot-(quantity*price);
+             var grand=JSON.stringify(tot);
+        localStorage.setItem("total1",grand);
+             removechild();
+                generateagain();
+            });
+        }
+        
+        
+        function removechild()
+        {
+           /* var childnodes=parent.childNodes;
+            for(var i=1;childnodes.length>1;)
+                parent.removeChild(childnodes[i]);*/
+            parent.innerHTML="";
+            
+            var tr=document.createElement("tr");
+                
+            var td1=document.createElement("td");
+            td1.setAttribute("style","width:100px");
+            td1.innerHTML="ID";
+            tr.append(td1);
+            
+             var td2=document.createElement("td");
+            td2.setAttribute("style","width:100px");
+            td2.innerHTML="Name";
+            tr.append(td2);
+            
+             var td3=document.createElement("td");
+            td3.setAttribute("style","width:100px");
+            td3.innerHTML="Price";
+            tr.append(td3);
+            
+             var td4=document.createElement("td");
+            td4.setAttribute("style","width:100px");
+            td4.innerHTML="Quantity";
+            tr.append(td4);
+            
+            
+            var td5=document.createElement("td");
+           td5.setAttribute("style","width:100px");
+            td5.innerHTML="Remove Item";
+            tr.append(td5);
+            
+            parent.append(tr);
+            
+            app.innerHTML="";
+            app.innerHTML="Grand Total=";
+            
+        }
+         
+                              
+        var p=localStorage.getItem("total1");
+        var tot=JSON.parse(p);
+        app.append(tot);
+        }  
+            }
+    </script>
+</body>
+</html>

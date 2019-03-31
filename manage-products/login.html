@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+        <style>
+    body
+    {
+    background: #9D50BB; 
+background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  
+background: linear-gradient(to right, #6E48AA, #9D50BB);
+    }
+         </style>
+</head>
+<body>
+   <center>
+    <div id="div" style="height:350px;width:350px;border:1px solid black; background: #b3ffab;background: -webkit-linear-gradient(to right, #b3ffab, #12fff7);  background: linear-gradient(to right, #b3ffab, #12fff7);box-shadow:black 2px 1px 1px;">
+        <input id="input" style="margin-top:50px;" type="text"/><br><br>
+        <button id="login" style="font-weight:bold;font-size:20px">Login</button>
+        <button id="register" style="font-weight:bold;font-size:20px">Register</button><br>
+        <a style="margin-top:500px;color:red;font-size:10px;">FORGET PASSWORD</a>
+    </div>
+    <p id="para" style="font-size:50px;color:red"></p>
+    </center>
+</body>
+<script>
+    var login=document.getElementById("login");
+    var register=document.getElementById("register");
+    var user="Nishant";
+    var user1="Rajesh";
+   // console.log(str);
+    login.addEventListener("click",function(event)
+                          {
+        var str=document.getElementById("input").value;
+        var div=document.getElementById("div");
+        var para=document.getElementById("para");
+        if(str.localeCompare(user)==0)
+            {
+                localStorage.setItem("user",user);
+                div.setAttribute("style","visibility:hidden");
+                para.innerHTML="Go To Show Product";
+            }
+        else if(str.localeCompare(user1)==0)
+            {
+                localStorage.setItem("user",user1);
+                div.setAttribute("style","visibility:hidden");
+                para.innerHTML="Go To Show Product";
+            }
+        else
+            alert("Invalid Username");
+    });
+    </script>
+</html>
