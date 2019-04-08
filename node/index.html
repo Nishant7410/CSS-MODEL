@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+ <div>
+  <input id="name" placeholder="Enter Data"/>
+<!--  <input id="file" placeholder="Enter filename"/>-->
+  <select id="select">
+      <option>name1</option>
+      <option>name2</option>
+  </select>
+  <button id="get">Submit</button><br>
+   <button id="1">1</button>
+   <button id="2">2</button>
+   <table id="table" width="30%" style="text-align:center;border:1px solid black"></table>
+    </div>   
+</body>
+<script>
+    (function(window, document, undefined)
+ {
+  var ENTER_KEY_CODE = 13;
+  var STATUS_OK = 200;
+
+    var  input=document.getElementById("name");
+    var file=document.getElementById("select");
+    var get=document.getElementById("get");
+    var file1=document.getElementById("1");
+    var file2=document.getElementById("2");
+    var parent=document.getElementById("table");
+   file1.addEventListener("click",function(event)
+                         {
+       var xhr=new XMLHttpRequest();
+       xhr.open("GET","/name1");
+       xhr.send();
+       xhr.onload=function()
+       {
+           console.log(xhr.responseText);
+           var data=JSON.parse(xhr.responseText);
+           parent.innerHTML="";
+           for(var i=0;i<data.length;i++)
+               {
+           var tr = document.createElement("tr");
+                   tr.setAttribute("id",i);
+                   var td=document.createElement("td");
+                   td.setAttribute("id","td"+i);
+                   td.innerHTML=data[i].text;
+                   tr.append(td);
+                   var td1=document.createElement("td");
+                   td1.setAttribute("id","td1"+i);
+           var btn = document.createElement("button");
+                   btn.setAttribute("id","btn"+i);
+                   btn.innerHTML="X";
+                   td1.append(btn);
+                   tr.append(td1);
+                   parent.append(tr);
+                   btn.addEventListener("click",function(event)
+                       {
+                       console.log("hii");
+                       var index=parseInt(event.target.parentNode.parentNode.id);
+                       var str=document.getElementById("td"+index).innerHTML;
+                       for(var i=0;i<data.length;i++)
+                           {
+                               if((data[i].text).localeCompare(str)==0)
+                                   {
+                                       console.log("jhfeu");
+                                        data.splice(i,1);
+                                       break;
+                                   }
+                           }
+                       fun1(data,"/name1");
+                   });
+                   
+               }
+       };
+   });
+      /* function fun(ob,str)
+        {
+            console.log("udeikdo");
+            var xhr=new XMLHttpRequest();
+            xhr.open("DELETE",str);
+            xhr.send(JSON.stringify(ob));
+            retrieve(str);
+        }*/
+    file2.addEventListener("click",function(event)
+                         {
+       var xhr=new XMLHttpRequest();
+       xhr.open("GET","/name2");
+       xhr.send();
+       xhr.onload=function()
+       {
+           var data=JSON.parse(xhr.responseText);
+            var parent=document.getElementById("table");
+           parent.innerHTML="";
+           for(var i=0;i<data.length;i++)
+               {
+       
+                   var tr=document.createElement("tr");
+                   tr.setAttribute("id",i);
+                   var td=document.createElement("td");
+                   td.setAttribute("id","td"+i);
+                   td.innerHTML=data[i].text;
+                   tr.append(td);
+                   var td1=document.createElement("td");
+                   td1.setAttribute("id","td1"+i);
+                   var btn=document.createElement("button");
+                   btn.setAttribute("id","btn"+i);
+                   btn.innerHTML="X";
+                   td1.append(btn);
+                   tr.append(td1);
+                   parent.append(tr);    
+                       btn.addEventListener("click",function(event)
+                                       {
+                       var index=parseInt(event.target.parentNode.parentNode.id);
+                       var str=document.getElementById("td"+index).innerHTML;
+                       for(var i=0;i<data.length;i++)
+                           {
+                               if((data[i].text).localeCompare(str)==0)
+                                   {
+                                       console.log("hii");
+                                      data.splice(i,1);
+                                       break;
+                                   }
+                           }
+                       fun1(data,"/name2");
+                   });
+               }
+       };
+   });
+        function retrieve(str)
+        {
+            var xhr=new XMLHttpRequest();
+       xhr.open("GET",str);
+       xhr.send();
+       xhr.onload=function()
+       {
+           var data=JSON.parse(xhr.responseText);
+            var parent=document.getElementById("table");
+           parent.innerHTML="";
+           for(var i=0;i<data.length;i++)
+               {
+                   var tr=document.createElement("tr");
+                   tr.setAttribute("id",i);
+                   var td=document.createElement("td");
+                   td.setAttribute("id","td"+i);
+                   td.innerHTML=data[i].text;
+                   tr.append(td);
+                   var td1=document.createElement("td");
+                   td1.setAttribute("id","td1"+i);
+                   var btn=document.createElement("button");
+                   btn.setAttribute("id","btn"+i);
+                   btn.innerHTML="X";
+                   td1.append(btn);
+                   tr.append(td1);
+                   parent.append(tr);
+                   btn.addEventListener("click",function(event) {
+                           console.log("hello");
+                       var index=parseInt(event.target.parentNode.parentNode.id);
+                       var str1= document.getElementById("td"+index).innerHTML;
+                       for(var i=0;i<data.length;i++)
+                           {
+                               if((data[i].text).localeCompare(str1)==0)
+                                   {
+                                       console.log("d")
+                                      data.splice(i,1);
+                                       break;
+                                   }
+                           }
+                       fun1(data,str);
+                   });
+        }
+       };
+        }
+       function fun1(ob,str)
+        {
+            var xhr=new XMLHttpRequest();
+            xhr.open("DELETE",str);
+            xhr.send(JSON.stringify(ob));
+            retrieve(str);
+        }
+    get.addEventListener("click",function(event)
+               {
+        var xhr=new XMLHttpRequest();
+        console.log(input.value);
+        xhr.open("POST","/"+file.value);
+        xhr.send(JSON.stringify({text:input.value}));
+    }
+        
+    );
+        })(this, this.document)
+</script>
+</html>
