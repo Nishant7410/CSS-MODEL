@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+var a='my name is khan';
+
+var flag=0;
+var ch='';
+var c=0;
+var first=0;
+var last=0;
+for(var i=0;i<=a.length;i++)
+{
+if(a[i]==' '||i==a.length)
+{
+if(flag==1)
+{
+last=i-1;
+if(c<(last-first+1))
+{var j;
+ ch='';
+for(j=first;j<=last;j++)
+{
+ch+=a[j];
+}
+c=(last-first+1);
+}
+}
+    flag=0;
+}
+else
+{
+if(flag==0)
+first=i;
+flag=1;
+}
+}
+console.log(ch);
+</script>
+
+</html>
