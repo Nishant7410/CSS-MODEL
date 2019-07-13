@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script>
+    var ch='my name is khan';
+    var flag=0;
+    var s='';
+    for(var i=0;i<ch.length;i++)
+        {
+            if(ch[i]==' ')
+                {
+                    flag=0;
+                    s+=ch[i];
+                }
+            else
+                {
+                    if(flag==0)
+                        {
+                     s+=ch[i].toUpperCase();
+                   
+                        }
+                    if(flag==1)
+                    s+=ch[i];
+              flag=1;
+                    
+                }
+        }
+    console.log(s);
+    </script>
+</html>
