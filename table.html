@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+    <input id="test" style="border-radius:30px;border:4px dotted blue;text-decoration:underline"/>
+    <table  id="data" height="100%" width="100%" >     </table>
+    <script>
+    var input=document.getElementById("test");
+    var parent=document.getElementById("data");
+                var i=0;
+    input.onkeyup=function(event)
+    {
+        console.log(event);
+        var code=event.keyCode;
+        
+        if(code==13)
+        {
+           
+            i=i+1;
+            var ele=document.createElement("td");
+            var but=document.createElement("button");
+             var tr=document.createElement("tr");
+         var tr1=document.createElement("td");
+         var tr2=document.createElement("td");
+         
+            var value=input.value;
+            ele.innerHTML=value;
+            but.innerHTML="X";
+         tr1.innerHTML=i;
+             parent.appendChild(tr);
+            tr.append(tr1);
+            tr.append(ele);
+         tr.append(but);
+         
+                but.onclick=function()
+                {
+                    parent.removeChild(tr);
+                }
+                                
+            }
+    }
+    
+    </script>
+</body>
+</html>
