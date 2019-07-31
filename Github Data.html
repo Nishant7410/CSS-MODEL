@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github</title>
+</head>
+<style>
+body
+{
+padding:0;
+margin:0;
+height:100%;
+width:100%;    
+background: #0B486B;
+background: -webkit-linear-gradient(to right, #F56217, #0B486B);
+background: linear-gradient(to right, #F56217, #0B486B); 
+
+}
+    img
+    {
+        margin-top:50px;
+        height:20%;
+        width:25%;
+    }
+    button{
+        background:red;
+        color:black;
+        width:8%;
+        height:50px;
+        border-radius:2px;
+        font-size:20px;
+    }
+    </style>
+<body id="body1">
+<div id="div1">
+    
+</div>
+<div id="div">
+<center>
+<img id="imag" onclick="fun1()" src=""/><br><br>
+<h2 id="h2"></h2>
+<br><br>
+<button id="prev" style="border:0;">Prev</button>
+<button id="next" style="border:0">Next</button>
+</center>
+</div>
+</body>
+<script>
+    var parent=document.createElement('table');
+    var xhr=new XMLHttpRequest();
+    var prev=document.getElementById('prev');
+    var next=document.getElementById('next');
+    var body1=document.getElementById('div');
+    var body2=document.getElementById('div1');
+    var ar=[],len;
+    var i=0,check=0;
+    xhr.open('get','https://api.github.com/users?since=135');
+    xhr.onload=function(){
+        ar=JSON.parse(xhr.responseText);
+        //console.log(ar);
+        var imag=document.getElementById('imag');
+        imag.setAttribute("src",ar[i].avatar_url);
+        var h=document.getElementById('h2');
+        h.innerHTML=ar[i].login;
+        len=ar.length;
+        //console.log(ar.length);
+    }
+    function fun1()
+    {
+        body1.setAttribute("style","display:none");
+        body2.innerHTML=JSON.stringify(ar[check]);
+        var b=document.createElement('br');
+        body2.append(b);
+        body2.append(b);
+        var but=document.createElement('button');
+        but.innerHTML="Back";
+        but.setAttribute('style','border:0');
+        but.setAttribute('style','color:red');
+        but.setAttribute('style','width:8%;height:50px');
+        body2.append(but);
+        body2.setAttribute("style","display:block");
+        but.addEventListener("click",() => fun(check));
+
+    }
+    function fun(len)
+    {
+        check=len;
+        body2.setAttribute("style","display:none");
+       var imag=document.getElementById('imag');
+       imag.setAttribute("src",ar[len].avatar_url);
+       var h=document.getElementById('h2');
+       h.innerHTML=ar[len].login;
+       body1.setAttribute("style","display:block");
+    }
+    prev.addEventListener("click",function(){
+        
+        
+       if(i<=0)
+           {
+            len--;
+             i--;
+           fun(len);
+           }
+        else{
+       i--;
+       fun(i);
+        }
+    })
+    next.addEventListener("click",function(){
+        if(i<-1)
+            {
+             len++;
+             i++;
+      fun(len); 
+            }
+        else
+            {
+       i++;
+      fun(i); 
+            }
+    })
+    xhr.send();
+    </script>
+</html>
