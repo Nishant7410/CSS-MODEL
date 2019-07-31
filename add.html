@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+</head>
+<body>
+    <input id="a"    />
+    <input  id="b"   />
+    <button id="add_btn"> add </button>
+    <button id="minus_btn"> minus </button>
+    <button id="multiply_btn"> multiply </button>
+     <p id="r"> </p>
+     <p id="r1"> </p>
+     <p id="r2"> </p>
+</body>
+<script>
+        var  addbtn=document.getElementById("add_btn");
+    var  minusbtn=document.getElementById("minus_btn");
+    var  multiplybtn=document.getElementById("multiply_btn");
+        
+      var a=document.getElementById("a");
+        var b=document.getElementById("b");
+    addbtn.onclick=function()
+    {
+          if(a.value==""||b.value=="")
+            alert("please insert value");
+        else{
+        var sum=parseInt(a.value)+parseInt(b.value);
+        var r=document.getElementById("r");
+        r.innerHTML=sum;
+        }
+    }
+    minusbtn.onclick=function()
+    {
+       
+        var minus=parseInt(a.value)-parseInt(b.value);
+        var r=document.getElementById("r1");
+        r.innerHTML=minus;
+    }
+    multiplybtn.onclick=function()
+    {
+        var multiply=parseInt(a.value)*parseInt(b.value);
+        var r=document.getElementById("r2");
+        r.innerHTML=multiply;
+    }
+    </script>
+</html>
