@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+    <input id="in"/>
+    <button id="add">Add</button>
+    <ul id="ul">
+        
+    </ul>
+</body>
+<script>
+    var input=document.getElementById('in');
+    var but=document.getElementById('add');
+    var ul=document.getElementById('ul');
+    but.addEventListener('click',function(e)
+                        {
+        var li=document.createElement('li');
+        li.innerHTML=input.value;
+        var span=document.createElement('span');
+        var dbut=document.createElement('button');
+        dbut.innerHTML='x';
+        span.append(dbut);
+        li.append(span);
+        ul.append(li);
+        dbut.addEventListener("click",function(e){
+            ul.removeChild(li);
+        })
+    })
+    </script>
+</html>
