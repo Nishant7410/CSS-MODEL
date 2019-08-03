@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="mycanvas" height="200" width="200" style="border:1px solid grey"></canvas>
+</body>
+<script>
+   var c=document.getElementById('mycanvas');
+    var ctx=c.getContext('2d');
+    var grd=ctx.createLinearGradient(0,50,50,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"blue");
+    ctx.fillStyle=grd;
+    var x=10,y=10;
+    setInterval(function(){
+        
+        ctx.clearRect(x,y,180,180);
+        x++;
+        ctx.fillRect(x,y,180,180);  
+        if(x==200)
+            x=0;
+        
+    },10)
+    </script>
+
+</html>
