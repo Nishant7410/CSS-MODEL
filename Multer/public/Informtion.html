@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Info</title>
+    <style>
+        html
+        {
+            padding:0;
+            margin:0;
+        }
+    body
+        {
+            margin:0;
+            padding:0;
+            height:100%;
+            width:100%;
+            background:#F3F4F4;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-div">
+        <div class="container div-min-width card allSidesSoft" style="border:2px solid grey;margin-top:60px" id="cont">
+            <div class="card allSidesSoft" id="container_id" style="background:rgb(249, 249, 249);margin-left:10px;">
+              <div class="card-body">
+
+              
+                <div class="d-flex pc">
+                    <div class="image-container">
+                        <img src="" style="height:150px;width:150px" id="user-profile-image" class="img-thumbnail allSideSoft"/>
+                    </div>
+                </div>
+              
+
+              
+
+                <br>
+                <br>
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">Name</div>
+                    <div class="panel-body" id="name"></div>
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">Email</div>
+                    <div class="panel-body" id="email" style="text-transform: capitalize;"></div>
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">DOB</div>
+                    <div class="panel-body" id="dob"></div>
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">Phone</div>
+                    <div class="panel-body" id="phone"></div>
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">City</div>
+                    <div class="panel-body null-link" id="city"></div>
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading">Gender</div>
+                    <div class="panel-body" id="gender"></div>
+                  </div>
+                </div>
+            
+              <div class="col-sm-6">
+                  <div class="panel panel-default panel-main-div">
+                    <div class="panel-heading"><a href="" id="doc1"></a></div>
+                  </div>
+                </div>
+
+        </div>
+      </div>
+    </div>
+</div> 
+</body>
+<script>
+    var ob=[];
+    var name=document.getElementById('name');
+    var email=document.getElementById('email');
+    var dob=document.getElementById('dob');
+    var phone=document.getElementById('phone');
+    var city=document.getElementById('city');
+    var gender=document.getElementById('gender');
+    var image=document.getElementById("user-profile-image");
+    var doc1=document.getElementById("doc1");
+    var xhr=new XMLHttpRequest();
+    xhr.open('GET','/name1');
+    console.log(xhr.responseText);
+    xhr.onload=function()
+    {
+        ob=JSON.parse(xhr.responseText);
+         image.setAttribute("src",ob[0].photo);
+    name.innerHTML=ob[0].name;
+    email.innerHTML=ob[0].email;
+    dob.innerHTML=ob[0].dob;
+    phone.innerHTML=ob[0].phone;
+    city.innerHTML=ob[0].city;
+    gender.innerHTML=ob[0].gender;
+    doc1.href=ob[0].resume;
+    }
+    xhr.send();
+   
+    
+    </script>
+</html>
