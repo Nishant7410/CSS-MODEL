@@ -1,0 +1,183 @@
+*{padding:0;margin:0;box-sizing:border-box;}
+#img
+{
+    height: 450px;
+    width: 100%;
+    margin-top:-15%;
+}
+.card-text{
+    padding-left:10px;
+    padding-right:10px;
+}
+.card-body{
+    border:1px solid #2d2b30;
+}
+#cards{
+    display:flex;
+    justify-content: center;
+    margin-top:10px;
+}
+.card
+{
+    width: 30rem;
+    padding:25px;
+}
+#adver
+{
+    position:absolute;
+    top:7%;
+    left:4%;
+}
+#needbtn1
+{
+   position:absolute;
+   top:180px; 
+    
+}
+#adver1
+{
+    position:absolute;
+    top:7%;
+    right:4%;
+}
+#span
+{
+    border-radius:18px;
+    border:1px solid black;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    color:white;
+    background:black;
+    opacity:0.8;
+}
+#state
+{
+    height:40px;
+    border:0;
+    top:100px;
+    position:absolute;
+    width:10%;
+/*    justify-content:center;*/
+    border:0;
+    margin-left: -6%;
+    outline:none;
+    border-radius:20px;
+    padding:10px;
+    opacity:0.7;
+    margin-right:10px;
+}
+#district
+{
+    margin-left: 5.8%;
+    height:40px;
+    border:0;
+    top:100px;
+    position:absolute;
+    width:10%;
+/*    justify-content:center;*/
+    border:0;
+    outline:none;
+    border-radius:20px;
+    padding:10px;
+    opacity:0.7;
+}
+#house
+{
+    margin-right:4px;
+    margin-bottom:2px;
+    height:22px;
+    width:4%;
+}
+#profile
+{
+   height:22px;
+    width: 25px;
+    margin-right:4px;
+    border-radius: 50%;   
+}
+#CityName{
+    padding-top:260px;
+    border-bottom:2 solid black;
+    padding-bottom:5px;
+}
+#needbtn2
+{
+    font-size:12px;
+    border-radius:18px;
+    border:1px solid black;
+    padding-top:10px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:10px;
+    color:white;
+    background:black;
+    opacity:0.8;
+    
+}
+
+.card-img-top
+{
+    height:150px;
+    width:100%;
+    
+}
+@media only screen and (min-device-width: 800px) and (max-device-width:1100px) {
+  #state {
+    width: 79px;
+    margin-left: -5%;
+}
+    #district {
+    width: 79px;
+    margin-right: 2%;
+}
+    img#img{
+        height: 380px;
+    }
+}
+@media only screen and (min-device-width: 10px) and (max-device-width:800px) {
+  #state {
+    width: 99px;
+    margin-left: 0%;
+}
+    #district {
+    width: 99px;
+    margin-right: 2%;
+            margin-top: 7%;
+            margin-left: 0%;
+}
+    img#img{
+        height: 380px;
+    }
+    #needbtn1{
+        margin-top: 4.9%;
+    }
+}
+@media only screen and (min-device-width: 10px) and (max-device-width:600px) {
+  #state {
+    width: 99px;
+    margin-left: 0%;
+}
+    #district {
+    width: 99px;
+    margin-right: 2%;
+    margin-top: 15%;
+    margin-left: 0%;
+}
+    .card
+    {
+        width:80%;
+        margin-left: 10%;
+    }
+    img#img{
+        height: 380px;
+    }
+    #needbtn1{
+        margin-top: 11%;
+    }
+    #cards{
+    display:unset !important;
+    }
+  
+}

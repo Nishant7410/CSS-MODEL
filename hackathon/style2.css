@@ -1,0 +1,76 @@
+*{padding:0;margin:0;box-sizing: border-box}
+c
+{
+    border-bottom:2px solid black;
+    font-weight:100;
+    font-size:40px;
+}
+#middle
+{
+    margin-top:70px;
+}
+#rent{
+    width:18%;
+    height:50px;
+    text-align: center;
+    margin-top: 6%;
+    margin-left: 21.4%;
+}
+#submit
+{
+    height:60px;
+    width:30%;
+    margin-left: 16%;
+    border-radius:30px;
+    margin-top:10%;
+    background:#2a2e2b;
+    color:white;
+    border:0;
+}
+#house
+{
+    height:450px;
+    width:450px;
+    margin-left:120px;
+}
+#textArea{
+    height: 125px;
+    width: 67%;
+    padding: 6px;
+}
+#textArea::placeholder{
+    font-size: 20px;
+}
+@media only screen and (min-device-width: 10px) and (max-device-width:1100px) {
+    #middle{
+        text-align: center;
+    }
+    #house{
+        margin-left: 0;
+        height: 341px;
+        width: 338px;
+    }
+    #textArea{
+        padding: 0;
+        width:60%;
+        height:95px;
+        margin-top: 2%;
+    }
+    c{
+        font-size: 22px;
+    }
+    #submit{
+        margin-left:0;
+        width:30%;
+    }
+    #rent
+    {
+        margin-left:0;
+    }
+}
+    #textArea::placeholder{
+    font-size: 15px;
+}
+      #submit::placeholder{
+    font-size: 25px;
+}

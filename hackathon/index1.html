@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="style1.css">
+        
+    <title>Document</title>
+</head>
+<body>
+    <div class="fluid">
+        <div id="imgdiv" class="col-xs-12 col-sm-12 col-lg-12 col-xl-12" style="padding:0px;display:flex;justify-content:center;">
+            <img id="img" src="B.jpg">
+            <div id="adver" ><span id="span"><img id="house" src="house.png">Advertisement</span></div>
+            <div id="adver1"><span id="span"><img id="profile" src="C.png"> Advertisement</span></div>
+            <select name="Select State" id="state">
+               <optgroup label="Select State"></optgroup>
+            </select>
+             <select name="Select City" id="district">
+               <optgroup label="Select City"></optgroup>
+            </select>
+            <div id="needbtn1"><span id="needbtn2">Need a roomate</span></div>
+        </div>
+        <center><div id="CityName" ><b><c style="border-bottom:1px solid black;font-weight:bold;font-size:30px;">Delhi</c></b></div></center>
+        <div id="cards" >
+        <div class="card">
+  <img src="building.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><center><pr style="color:grey;border-bottom:1px solid grey">Description</pr></center></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+       <div style="display:flex;">
+        <c style="margin-left:4%">5000</c>
+        <c style="margin-left:50.5%">By: Ankit</c>
+        </div>
+  </div>
+</div>
+     <div class="card" >
+  <img src="building.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+      <h5 class="card-title"><center><pr style="color:grey;border-bottom:1px solid grey">Description</pr></center></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div style="display:flex;">
+        <c style="margin-left:4%">5000</c>
+        <c style="margin-left:50.5%">By: Niiii</c>
+        </div>
+  </div>
+</div>
+   </div>
+    </div>
+</body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+     <script>
+         let data;
+    const makeOption = function(k){
+        let o = document.createElement('option');
+        o.setAttribute('name',k);
+        o.setAttribute('value',k);
+        o.setAttribute('width',"100%")
+        o.innerHTML = k;
+        return o;
+    }
+  var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        data = JSON.parse(xhttp.responseText);
+       
+
+var states = document.getElementById('state');
+        console.log(states);
+var district = document.getElementById('district');
+        console.log(district)
+
+console.log(states);
+
+            Object.keys(data).sort().forEach((k)=>{
+                states.appendChild(makeOption(k));
+            })
+
+            states.addEventListener('change',()=>{
+                district.disabled=false;
+                district.innerHTML = "";
+                data[states.value].forEach((k)=>{
+                    district.appendChild(makeOption(k));
+                })
+            })
+
+    }
+};
+xhttp.open("GET", "https://gist.githubusercontent.com/nateshmbhat/7e1a28eba37364be1456f9c4688bd2a7/raw/ec3cc1be87ef3f1b6e1e8849ecda78adb40e0f9a/All%2520States%2520and%2520Districts.json");
+xhttp.send();
+    </script>
+      
+</html>

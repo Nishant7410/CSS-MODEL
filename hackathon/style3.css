@@ -1,0 +1,120 @@
+*{padding:0;margin:0;box-sizing:border-box;}
+.card-img-top{
+    width: 100%;
+    height:150px;
+}
+.card-text{
+    padding-left:10px;
+    padding-right:10px;
+}
+.card-body{
+    border:1px solid #2d2b30;
+}
+#cards{
+    display:flex;
+    justify-content: center;
+    margin-top:10px;
+}
+.card
+{
+    width: 45%;
+    padding:25px;
+}
+#active{
+    margin-left: 41%;
+    margin-top: 4%;
+}
+#activeadd{
+    color:grey;
+}
+#submit
+{
+    height:45px;
+    width:35%;
+/*    margin-left: 16%;*/
+    border-radius:30px;
+    margin-top:10%;
+    background:#2a2e2b;
+    color:white;
+    border:0;
+    outline:none;
+}
+#submit1
+{
+    height:45px;
+    width:35%;
+/*    margin-left: 16%;*/
+    border-radius:30px;
+    margin-top:6%;
+    background:#2a2e2b;
+    color:white;
+    border:0;
+    outline:none;
+}
+#dd{
+    margin-top: 3%;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width:1100px) {
+    div.card{
+        width:38%;
+    }
+    #activeadd{
+            margin-left: 4%;
+            font-size: 23px;
+            margin-top: -2%;
+    }
+    #dd{
+            margin-top: -5%;
+    }
+    #h1id{
+        margin-top: -2%;
+    }
+    #submit1{
+            margin-top: 0.6%;
+    }
+}
+@media only screen and (min-device-width: 500px) and (max-device-width:768px) {
+    #activeadd{
+            margin-left: 0%;
+            font-size: 23px;
+            margin-top: -2%;
+    }
+    #dd{
+            margin-top: -5%;
+    }
+    #h1id{
+        margin-top: -2%;
+    }
+    #submit1{
+            margin-top: 0.6%;
+    }
+    div.card{
+        width: 45%;
+    }
+}
+@media only screen and (min-device-width: 10px) and (max-device-width:500px) {
+    #activeadd{
+            margin-left: 0%;
+            font-size: 23px;
+            margin-top: -2%;
+    }
+    #dd{
+            margin-top: -5%;
+    }
+    #h1id{
+        margin-top: -4%;
+    }
+    #submit1{
+            margin-top: 0.6%;
+    }
+    div.card{
+        width: 77%;
+    }
+    button#submit{
+            width: 50%;
+    }
+    button#submit1{
+            width: 50%;
+    }
+}
